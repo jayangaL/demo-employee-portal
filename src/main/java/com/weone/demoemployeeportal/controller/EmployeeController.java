@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,5 +73,17 @@ public class EmployeeController{
         Optional<Employee> employee = employeeService.getEmployeeById(emp_id);
 
         return new ResponseEntity<>(employee,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public ResponseEntity<HashMap> deleteEmployeeById(@RequestBody Employee emp_id){
+
+        employeeService.deleteEmployeeById(emp_id);
+
+        HashMap<String,String> res = new HashMap<>();
+
+        res.put("sucess","employee deleted");
+
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 }

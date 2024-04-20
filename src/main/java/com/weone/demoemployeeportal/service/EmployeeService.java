@@ -26,6 +26,10 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
+    public void deleteEmployeeById(Employee emp){
+        employeeRepository.delete(emp);
+    }
+
     public Employee updateExistingEmployee(Employee employee) throws Exception {
         Employee db_employee;
         if(employeeRepository.findById(employee.getEmployee_id()).isPresent()) {

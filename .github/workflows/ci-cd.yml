@@ -52,5 +52,5 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          scp -i ~/.ssh/id_rsa target/*.jar user@your-server:/path/to/deploy/
-          ssh -i ~/.ssh/id_rsa user@your-server "cd /path/to/deploy/ && ./restart_service.sh"
+          scp -i ~/.ssh/id_rsa target/*.jar user@your-server:/tmp/
+          ssh -i ~/.ssh/id_rsa user@your-server "bash /usr/local/bin/deploy.sh"
